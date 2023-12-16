@@ -1,36 +1,12 @@
-from bs4 import BeautifulSoup
-import requests
-import time
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
+
+import Functions
+import datetime
+
 url = "https://kworb.net/spotify/songs.html"
-response = requests.get(url,verify=False).text
+a=Functions.getting_df(url)
 
-soup = BeautifulSoup(response)
-
-song_list=[]
-links = soup.find_all('tr')
-for i in links:
-    songs=i.find_all('div')
-    for song in songs:
-        song_list.append(song.text)
-
-# Create a list of dictionaries where each dictionary represents a row of data
-data = []
-
-for i in song_list:
-    if " - " in i:
-        A= i.split(" - ")
-        data.append({"singer": A[0], "song_name": A[1]})
-df = pd.DataFrame(data)
-sing_num=[]
-for i in df["singer"].unique():
-    sing_num.append({"singer": i, "number": len(df[df["singer"]==i])})
-sing_num_df = pd.DataFrame(sing_num)
-
-df_sorted = sing_num_df.sort_values(by="number", ascending=False)
-
-df_sorted = df_sorted.reset_index(drop=True)
-first_10_rows = df_sorted.head(10)
-first_10_rows.to_excel("singer_num.xlsx")
+a['Artist']=[a['Artist and Title'][i].split(' - ')[0] for i in a.index]
+a['Title']=[a['Artist and Title'][i].split(' - ')[1] for i in a.index]
+today_date = datetime.date.today()
+formatted_date = today_date.strftime("%d_%m_%Y")
+a.to_excel(f"top_2500/{formatted_date}.xlsx")

@@ -1,25 +1,29 @@
+import requests
+import time
+from bs4 import BeautifulSoup
 import pandas as pd
-import matplotlib.pyplot as plt
+import os
+def getting_df(url):
+    response = requests.get(url, verify=False).text
+    soup = BeautifulSoup(response)
+    links = soup.find_all('tr')
+    a = links[0].find_all('th')
+    title = []
+    for k in a:
+        title.append(k.text)
+    lst=[]
+    for i in links[1:]:
+        a=i.find_all('td')
+        lst1 = []
+        for k in a:
+            lst1.append(k.text)
+        lst.append(lst1)
+    df = pd.DataFrame(lst, columns=title)
+    return df
 
-# Sample DataFrame
-data = {
-    "singer": ["Artist 1", "Artist 2", "Artist 3", "Artist 4", "Artist 5"],
-    "song_rating": [3, 4, 5, 2, 4]
-}
-
-df = pd.DataFrame(data)
-
-# Select the column for which you want to create a histogram
-column_to_plot = "song_rating"
-
-# Create a histogram
-plt.figure(figsize=(8, 5))  # Set the figure size
-plt.hist(df[column_to_plot], bins=5, edgecolor='black', alpha=0.7)
-
-# Add labels and a title
-plt.xlabel(column_to_plot)
-plt.ylabel("Frequency")
-plt.title(f"Histogram of {column_to_plot}")
-
-# Show the plot
-plt.show()
+def create_folder(country_folder_path,subfolder_name):
+    subfolder_path = os.path.join(country_folder_path, subfolder_name)
+    try:
+        os.makedirs(subfolder_path)
+    except:
+        print("We already have this folder")
