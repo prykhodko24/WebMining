@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from API import search_for_artist
-folder_path = 'Country'
+folder_path = '../Country'
 
 # Get a list of all files in the folder
 files = os.listdir(folder_path)

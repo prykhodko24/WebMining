@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-folder_path = 'top_2500'
+folder_path = '../top_2500'
 
 # Get a list of all files in the folder
 files = os.listdir(folder_path)
