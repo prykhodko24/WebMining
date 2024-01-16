@@ -2,10 +2,7 @@
 import os 
 import streamlit as st 
 import pandas as pd  # pip install pandas openpyxl
-try:
-  import plotly.express as px
-except ImportError:
-  os.system('python -m pip install plotly')
+import plotly.express as px
 import streamlit as st  # pip install streamlit
 import base64
 from datetime import datetime
