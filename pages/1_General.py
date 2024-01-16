@@ -15,7 +15,6 @@ try:
 except ImportError:
   os.system('python -m pip install openpyxl')
 
-import openpyxl
 import base64
 from datetime import datetime
 from pathlib import Path
