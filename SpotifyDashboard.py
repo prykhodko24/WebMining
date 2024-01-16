@@ -1,10 +1,17 @@
 # %% Importing crucial libabaries
+import os
 import streamlit as st 
-import pandas as pd  # pip install pandas openpyxl
-import plotly.express as px  # pip install plotly-express
+try:
+  import pandas as pd 
+except ImportError:
+  os.system('python -m pip install pandas')
+try:
+  import plotly.express as px
+except ImportError:
+  os.system('python -m pip install plotly')
 import streamlit as st  # pip install streamlit
 import base64
-import os
+
 from pathlib import Path
 
 # %%
