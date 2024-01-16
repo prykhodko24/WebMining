@@ -4,3 +4,4 @@ openpyxl
 altair
 plotly
 kaleido
+streamlit_echarts
