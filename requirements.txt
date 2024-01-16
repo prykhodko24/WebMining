@@ -6,3 +6,6 @@ plotly
 kaleido
 streamlit_echarts
 matplotlib
+squarify
+seaborn
+pathlib
