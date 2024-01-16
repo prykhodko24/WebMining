@@ -1,6 +1,7 @@
 # %% Importing crucial libabaries
 import os 
 import streamlit as st 
+%conda install openpyxl 
 try:
   import pandas as pd
 except ImportError:
