@@ -6,6 +6,7 @@ try:
   import plotly.express as px
 except ImportError:
   os.system('python -m pip install plotly')
+import openpyxl
 import base64
 from datetime import datetime
 from pathlib import Path
