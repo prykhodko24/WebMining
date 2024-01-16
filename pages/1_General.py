@@ -1,7 +1,11 @@
 # %% Importing crucial libabaries
-import streamlit as st 
-import pandas as pd 
 import os 
+import streamlit as st 
+try:
+  import pandas as pd
+except ImportError:
+  os.system('python -m pip install pandas')
+
 try:
   import plotly.express as px
 except ImportError:
