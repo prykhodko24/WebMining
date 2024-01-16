@@ -1,4 +1,5 @@
 # %% Importing crucial libabaries
+# pip install plotly-express
 import streamlit as st 
 import pandas as pd  # pip install pandas openpyxl
 import plotly.express as px  # pip install plotly-express
