@@ -1,13 +1,13 @@
 # %% Importing crucial libabaries
 import streamlit as st 
 import pandas as pd 
+import os 
 try:
   import plotly.express as px
 except ImportError:
   os.system('python -m pip install plotly')
 import base64
 from datetime import datetime
-import os 
 from pathlib import Path
 # %% ---- Logo update ----
 st.sidebar.success("Select a section above")
